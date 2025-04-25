@@ -1,0 +1,295 @@
+/* ====== GLOBAL STYLES ====== */
+:root {
+    --primary: #8B4513;       /* Rich Sienna */
+    --primary-light: #A0522D; /* Light Sienna */
+    --secondary: #D2B48C;     /* Earthy Tan */
+    --accent: #CD853F;        /* Warm Peru */
+    --light: #FAF0E6;         /* Soft Linen */
+    --dark: #5C4033;          /* Deep Brown */
+    --text: #333333;
+    --text-light: #666666;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #FFF9F5;  /* Warm white */
+    color: var(--text);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* ====== EVENT DETAILS PAGE ====== */
+  .event-detail-container {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+  }
+  
+  /* Hero Section */
+  .event-hero {
+    background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%), 
+                url('hero-bg.jpg') center/cover no-repeat;
+    height: 65vh;
+    min-height: 400px;
+    border-radius: 16px;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    margin-bottom: 3rem;
+  }
+  
+  .event-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  }
+  
+  .hero-text {
+    position: relative;
+    z-index: 2;
+    padding: 3rem;
+    color: white;
+    width: 100%;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.8rem;
+    margin: 0 0 0.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    line-height: 1.2;
+  }
+  
+  .hero-text p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin: 0;
+  }
+  
+  /* Content Sections */
+  .detail-section {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.03);
+  }
+  
+  .detail-section h2 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-top: 0;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  
+  .detail-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--accent);
+  }
+  
+  /* Feature Grid */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  
+  .feature-card {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  }
+  
+  .feature-card h3 {
+    color: var(--primary-light);
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* Buttons */
+  .btn-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .btn {
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .btn-primary {
+    background: var(--primary);
+    color: white;
+    border: 2px solid var(--primary);
+  }
+  
+  .btn-primary:hover {
+    background: var(--primary-light);
+    border-color: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
+  }
+  
+  .btn-secondary {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+  }
+  
+  .btn-secondary:hover {
+    background: rgba(139, 69, 19, 0.05);
+    transform: translateY(-2px);
+  }
+  
+  .btn-accent {
+    background: var(--accent);
+    color: white;
+    border: 2px solid var(--accent);
+  }
+  
+  .btn-accent:hover {
+    background: #D17C29;
+    border-color: #D17C29;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(205, 133, 63, 0.3);
+  }
+  
+  /* ====== TICKETS PAGE ====== */
+  .ticket-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+  
+  .ticket-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .ticket-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .ticket-card.popular::before {
+    content: 'Most Popular';
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--accent);
+    color: white;
+    padding: 0.3rem 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-bottom-left-radius: 12px;
+  }
+  
+  .ticket-type {
+    font-size: 1.3rem;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+  }
+  
+  .ticket-price {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin: 1rem 0;
+    font-weight: 700;
+  }
+  
+  .ticket-price span {
+    font-size: 1rem;
+    color: var(--text-light);
+  }
+  
+  .ticket-features {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+  }
+  
+  .ticket-features li {
+    padding: 0.7rem 0;
+    border-bottom: 1px dashed #eee;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  
+  .ticket-features li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: bold;
+  }
+  
+  /* ====== RESPONSIVE ADJUSTMENTS ====== */
+  @media (max-width: 768px) {
+    .event-hero {
+      height: 50vh;
+    }
+    
+    .hero-text {
+      padding: 2rem;
+    }
+    
+    .hero-text h1 {
+      font-size: 2.2rem;
+    }
+    
+    .detail-section {
+      padding: 1.5rem;
+    }
+  }
+  
+  /* ====== ANIMATIONS ====== */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .detail-section, .ticket-card {
+    animation: fadeIn 0.6s ease forwards;
+  }
+  
+  .ticket-card:nth-child(2) {
+    animation-delay: 0.2s;
+  }
