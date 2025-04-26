@@ -1,0 +1,120 @@
+/* Ticket Booking Page Styles */
+.ticket-hero {
+    height: 50vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1920x1080') no-repeat center/cover;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.ticket-hero h1 span {
+    color: #d4af37;
+}
+
+.booking-form, .pricing-summary, .payment-options {
+    padding: 4rem 0;
+}
+
+.booking-form .container, 
+.pricing-summary .container, 
+.payment-options .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input, 
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.summary-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.summary-table th, 
+.summary-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.summary-table th {
+    background: #f9f9f9;
+}
+
+.summary-table .total {
+    font-weight: bold;
+    background: #f0f0f0;
+}
+
+.payment-methods {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.payment-method {
+    flex: 1;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.payment-method i {
+    font-size: 2rem;
+    color: #d4af37;
+    margin-bottom: 0.5rem;
+}
+
+.payment-method.active {
+    border-color: #d4af37;
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.payment-form {
+    margin-top: 2rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+    }
+    .payment-methods {
+        flex-direction: column;
+    }
+}

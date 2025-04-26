@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artifact Details | ArtVista.in</title>
+    <style>
+        :root {
+            --primary: #8B4513;
+            --light: #FAF0E6;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+            margin: 0;
+        }
+        .artifact-detail {
+            max-width: 1200px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 20px;
+        }
+        .artifact-visual {
+            position: sticky;
+            top: 20px;
+        }
+        .main-image {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .artifact-meta {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        h1 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        .meta-item {
+            margin-bottom: 20px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 15px;
+        }
+        .label {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .ar-btn {
+            background: var(--primary);
+            color: rgb(115, 32, 32);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .back-btn {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .artifact-detail {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div style="padding: 20px;">
+        <button class="back-btn" onclick="window.history.back()">← Back to Collection</button>
+    </div>
+    
+    <div class="artifact-detail">
+        <div class="artifact-visual">
+            <img src="mughal-miniature-1-highres.jpg" alt="Mughal Court Scene" class="main-image">
+            <button class="ar-btn" onclick="launchAR()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M17 7l4-4m0 0l-4-4m4 4H7a4 4 0 000 8h10m4-4l-4 4m0 0l4 4m-4-4H7"></path>
+                </svg>
+                View in AR
+            </button>
+        </div>
+        
+        <div class="artifact-meta">
+            <h1>Mughal Court Scene</h1>
+            
+            <div class="meta-item">
+                <span class="label">Period:</span> 
+                <span>Jahangir Era (1620 CE)</span>
+            </div>
+            
+            <div class="meta-item">
+                <span class="label">Dimensions:</span> 
+                <span>12.5 × 8.2 cm</span>
+            </div>
+            
+            <div class="meta-item">
+                <span class="label">Materials:</span> 
+                <span>Wasli paper, gold leaf, lapis lazuli, organic pigments</span>
+            </div>
+            
+            <div class="meta-item">
+                <span class="label">Location:</span> 
+                <span>Agra Fort, Uttar Pradesh</span>
+            </div>
+            
+            <div class="meta-item">
+                <span class="label">Description:</span>
+                <p>This miniature painting depicts Emperor Jahangir receiving Persian diplomats in the Diwan-i-Khas of Agra Fort. Notable for its intricate border design featuring European-inspired floral motifs, reflecting cultural exchanges during this period.</p>
+            </div>
+            
+            <div class="meta-item">
+                <span class="label">Cultural Significance:</span>
+                <p>Demonstrates the fusion of Persian miniature techniques with Indian storytelling traditions. The gold leaf application method shown here was later lost and rediscovered in the 20th century.</p>
+            </div>
+            
+            <div class="meta-item">
+                <span class="label">Conservation Status:</span>
+                <p>Digitally restored in 2023 | Original housed at National Museum, Delhi</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function launchAR() {
+            // AR integration code
+            console.log("Launching AR viewer...");
+        }
+        
+        // Fetch artifact data based on URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const artifactId = urlParams.get('id');
+        console.log("Loading data for artifact:", artifactId);
+    </script>
+</body>
+</html>

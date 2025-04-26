@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection Details | ArtVista.in</title>
+    <style>
+        .collection-header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.3)), var(--hero-image);
+            background-size: cover;
+            padding: 100px 40px;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .artifact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 40px;
+        }
+        
+        .artifact-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .artifact-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .artifact-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 15px;
+        }
+        
+        .artifact-info {
+            padding: 20px;
+        }
+        
+        .view-btn {
+            background: var(--accent);
+            color: rgb(219, 23, 23);
+            border: ;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .back-btn {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="collection-header" style="--hero-image: url('miniature-paintings-hero.jpg')">
+        <button class="back-btn" onclick="window.history.back()">← Back to Collections</button>
+        <h1>Miniature Paintings</h1>
+        <p>215 artifacts | Mughal, Rajput & Pahadi schools (16th-19th century)</p>
+    </div>
+    
+    <div class="artifact-grid">
+        <!-- Artifact 1 -->
+        <div class="artifact-card">
+            <div class="artifact-image" style="background-image: url('mughal-miniature-1.jpg');">
+                <div class="artifact-overlay">
+                    <h3>Mughal Court Scene</h3>
+                    <p>Circa 1620, Agra</p>
+                </div>
+            </div>
+            <div class="artifact-info">
+                <p>Depicts Emperor Jahangir receiving diplomats. Gold leaf and lapis lazuli pigments.</p>
+                <button class="view-btn" onclick="openArtifact('mughal-1620')">View in AR</button>
+            </div>
+        </div>
+        
+        <!-- Artifact 2 -->
+        <div class="artifact-card">
+            <div class="artifact-image" style="background-image: url('rajput-miniature.jpg');">
+                <div class="artifact-overlay">
+                    <h3>Radha-Krishna Series</h3>
+                    <p>18th century, Jaipur</p>
+                </div>
+            </div>
+            <div class="artifact-info">
+                <p>Bhagavata Purana illustration with organic indigo dyes.</p>
+                <button class="view-btn" onclick="openArtifact('rajput-radha')">View in AR</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openArtifact(artifactID) {
+            window.location.href = `artifact-viewer.html?id=${artifactID}`;
+        }
+    </script>
+</body>
+</html>
