@@ -3,26 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Tickets | Ancient Shivaji Maharaj Museum</title>
-    <link rel="stylesheet" href="/Meauseum/css/ticket.css">
-    <link rel="stylesheet" href="/Meauseum/css/style.css">
-    <link rel="stylesheet" href="/Meauseum/css/aboutus.css">
-
+    <title>Book Tickets | ArtVasta Museum</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/Meauseum/css/ticket.css">
 </head>
 <body>
     <!-- Header & Navigation -->
     <header>
         <nav>
             <div class="logo">
-              
                 <h1>ArtVasta</h1>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="/ticket.html" class="active">Tickets</a></li>
+                <li><a href="ticket.html" class="active">Tickets</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="hamburger">
@@ -31,14 +27,11 @@
         </nav>
     </header>
 
-   
-
-
     <!-- Ticket Booking Hero -->
     <section class="ticket-hero">
         <div class="hero-content">
             <h1>Book Your <span>Museum Tickets</span></h1>
-            <p>Secure your visit to explore the legacy of Chhatrapati Shivaji Maharaj.</p>
+            <p>Secure your visit to explore the artistic wonders at ArtVasta Museum.</p>
         </div>
     </section>
 
@@ -56,10 +49,10 @@
                     <label for="ticket-type">Ticket Type</label>
                     <select id="ticket-type" name="ticket-type" required>
                         <option value="" disabled selected>Select Ticket</option>
-                        <option value="adult">Adult (₹50)</option>
-                        <option value="child">Child (5-12 years, ₹20)</option>
-                        <option value="student">Student (with ID, ₹30)</option>
-                        <option value="foreign">Foreign Tourist (₹200)</option>
+                        <option value="adult">Adult (₹200)</option>
+                        <option value="child">Child (5-12 years, ₹100)</option>
+                        <option value="student">Student (with ID, ₹150)</option>
+                        <option value="foreign">Foreign Tourist (₹500)</option>
                         <option value="senior">Senior Citizen (Free)</option>
                     </select>
                 </div>
@@ -68,8 +61,6 @@
                     <label for="quantity">Quantity</label>
                     <input type="number" id="quantity" name="quantity" min="1" max="10" value="1" required>
                 </div>
-
-             
 
                 <h3>Personal Details</h3>
                 <div class="form-group">
@@ -92,8 +83,7 @@
         </div>
     </section>
 
-
-    <!-- Pricing Summary (Hidden until JS calculates) -->
+    <!-- Pricing Summary -->
     <section class="pricing-summary" id="pricingSummary" style="display: none;">
         <div class="container">
             <h2>Order Summary</h2>
@@ -107,23 +97,18 @@
                     <tr id="ticketRow">
                         <td>Adult</td>
                         <td>1</td>
-                        <td>₹50</td>
-                    </tr>
-                    <tr id="lightShowRow" style="display: none;">
-                        <td>Light Show</td>
-                        <td>1</td>
-                        <td>₹100</td>
+                        <td>₹200</td>
                     </tr>
                     <tr class="total">
                         <td colspan="2">Total</td>
-                        <td id="totalPrice">₹50</td>
+                        <td id="totalPrice">₹200</td>
                     </tr>
                 </table>
             </div>
         </div>
     </section>
 
-    <!-- Payment Options (Hidden until form submit) -->
+    <!-- Payment Options -->
     <section class="payment-options" id="paymentOptions" style="display: none;">
         <div class="container">
             <h2>💳 Payment Method</h2>
@@ -146,9 +131,9 @@
                 </div>
             </div>
 
-            <!-- Credit Card Form (Default) -->
+            <!-- Credit Card Form -->
             <div class="payment-form" id="creditCardForm">
-                <form id="paymentForm">
+                <form id="cardPaymentForm">
                     <div class="form-group">
                         <label for="card-number">Card Number</label>
                         <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
@@ -171,9 +156,9 @@
                 </form>
             </div>
 
-            <!-- UPI Form (Hidden) -->
+            <!-- UPI Form -->
             <div class="payment-form" id="upiForm" style="display: none;">
-                <form>
+                <form id="upiPaymentForm">
                     <div class="form-group">
                         <label for="upi-id">UPI ID</label>
                         <input type="text" id="upi-id" placeholder="name@upi" required>
@@ -181,22 +166,10 @@
                     <button type="submit" class="btn">Pay via UPI</button>
                 </form>
             </div>
-<!-- QR Code Form (Hidden) -->
-<div class="payment-form" id="qrForm" style="display: none;">
-    <div class="qr-payment-container">
-        <h3>Scan the QR Code to Pay</h3>
-        <div class="qr-code" id="qrCodeDisplay">
-            <!-- QR code will be generated here -->
-        </div>
-        <p>Amount: <span id="qrAmount">₹50</span></p>
-        <div class="qr-timer">
-            <p>This QR will expire in: <span id="qrTimer">10</span> seconds</p>
-        </div>
-    </div>
-</div>
-            <!-- Net Banking Form (Hidden) -->
+
+            <!-- Net Banking Form -->
             <div class="payment-form" id="netBankingForm" style="display: none;">
-                <form>
+                <form id="netBankingPaymentForm">
                     <div class="form-group">
                         <label for="bank">Select Bank</label>
                         <select id="bank" required>
@@ -209,29 +182,121 @@
                     <button type="submit" class="btn">Proceed to Net Banking</button>
                 </form>
             </div>
+
+            <!-- QR Code Form -->
+            <div class="payment-form" id="qrForm" style="display: none;">
+                <div class="qr-payment-container">
+                    <h3>Scan the QR Code to Pay</h3>
+                    <div class="qr-code" id="qrCodeDisplay"></div>
+                    <p>Amount: <span id="qrAmount">₹200</span></p>
+                    <div class="qr-timer">
+                        <p>This QR will expire in: <span id="qrTimer">10</span> seconds</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-    <!-- Payment Processing Section -->
-<div id="paymentProcessing" style="display: none; text-align: center; padding: 40px;">
-    <h2>Verifying Your Payment...</h2>
-    <div class="loader"></div>
-    <p>Please wait while we process your payment. This may take a few seconds.</p>
-</div>
 
-<!-- Payment Success Message -->
-<div id="paymentSuccess" style="display: none; text-align: center; padding: 40px;">
-    <h2>🎉 Payment Successful!</h2>
-    <p>Thank you for your booking. Your ticket will be sent to your email shortly.</p>
-</div>
+    <!-- Payment Processing -->
+    <div id="paymentProcessing" style="display: none; text-align: center; padding: 40px;">
+        <h2>Verifying Your Payment...</h2>
+        <div class="loader"></div>
+        <p>Please wait while we process your payment. This may take a few seconds.</p>
+    </div>
+
+    <!-- Payment Success with Ticket -->
+    <div id="paymentSuccess" style="display: none; text-align: center; padding: 40px 0;">
+        <h2>🎉 Payment Successful!</h2>
+        <p>Your ticket has been sent to your email. You can also download it below.</p>
+        
+        <!-- Generated Ticket -->
+        <div class="ticket-container" id="generatedTicket">
+            <div class="ticket-watermark">ARTVASTA</div>
+            <div class="ticket-valid">VALID</div>
+            <div class="ticket-header">
+                <h2>ArtVasta Museum</h2>
+                <p>Entry Ticket</p>
+            </div>
+            <div class="ticket-body">
+                <div class="ticket-info">
+                    <div>
+                        <strong>Ticket Number</strong>
+                        <span id="ticketNumber">AV2023-XXXXXX</span>
+                    </div>
+                    <div>
+                        <strong>Date of Visit</strong>
+                        <span id="ticketVisitDate">DD/MM/YYYY</span>
+                    </div>
+                    <div>
+                        <strong>Visitor Name</strong>
+                        <span id="ticketVisitorName">Visitor Name</span>
+                    </div>
+                    <div>
+                        <strong>Ticket Type</strong>
+                        <span id="ticketType">Adult</span>
+                    </div>
+                    <div>
+                        <strong>Quantity</strong>
+                        <span id="ticketQuantity">1</span>
+                    </div>
+                    <div>
+                        <strong>Total Paid</strong>
+                        <span id="ticketAmount">₹200</span>
+                    </div>
+                    <div>
+                        <strong>Payment Method</strong>
+                        <span id="ticketPaymentMethod">Credit Card</span>
+                    </div>
+                    <div>
+                        <strong>Transaction ID</strong>
+                        <span id="ticketTransactionId">TXNXXXXXX</span>
+                    </div>
+                </div>
+                
+                <div class="ticket-qr">
+                    <h3>Scan this QR at entrance</h3>
+                    <div id="ticketQrCode"></div>
+                    <p>Valid for single entry on visit date</p>
+                </div>
+                
+                <div class="ticket-terms">
+                    <p><strong>Terms & Conditions:</strong></p>
+                    <ul class="terms-list">
+                        <li>This ticket is non-transferable and non-refundable</li>
+                        <li>Valid only for the date mentioned above</li>
+                        <li>Please carry valid ID proof matching the name on ticket</li>
+                        <li>ArtVasta reserves the right to deny entry</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="ticket-footer">
+                <p>Thank you for visiting ArtVasta Museum</p>
+                <p>For any queries, contact: info@artvasta.org | +91-XXXXXXX</p>
+            </div>
+        </div>
+        
+        <div class="ticket-actions">
+            <button class="btn-print" onclick="printTicket()">
+                <i class="fas fa-print"></i> Print Ticket
+            </button>
+            <button class="btn-download" onclick="downloadTicket()">
+                <i class="fas fa-download"></i> Download Ticket
+            </button>
+        </div>
+        
+        <div class="email-notification">
+            <p><i class="fas fa-envelope"></i> A copy of this ticket has been sent to <span id="ticketEmail"></span></p>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Contact Us</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Shivaji Nagar, Pune, Maharashtra</p>
+                <p><i class="fas fa-map-marker-alt"></i> Art District, Mumbai, Maharashtra</p>
                 <p><i class="fas fa-phone"></i> +91-XXXXXXX</p>
-                <p><i class="fas fa-envelope"></i> info@shivajimuseum.org</p>
+                <p><i class="fas fa-envelope"></i> info@artvasta.org</p>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
@@ -251,11 +316,10 @@
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2023 Ancient Shivaji Maharaj Museum. All Rights Reserved.</p>
+            <p>&copy; 2023 ArtVasta Museum. All Rights Reserved.</p>
         </div>
     </footer>
-    <!-- link to ticket.js file -->
+
     <script src="/Meauseum/js/ticket.js"></script>
- 
 </body>
 </html>

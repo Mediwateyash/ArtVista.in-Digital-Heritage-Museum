@@ -129,75 +129,113 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Simulate payment verification
         setTimeout(function() {
-            document.getElementById('paymentProcessing').style.display = 'none';
-            document.getElementById('paymentSuccess').style.display = 'block';
-            
-            document.getElementById('paymentSuccess').scrollIntoView({
-                behavior: 'smooth'
-            });
+            showPaymentSuccess('qr');
         }, 1500);
+    }
+
+    // Show Payment Success with Ticket
+    function showPaymentSuccess(paymentMethod) {
+        document.getElementById('paymentProcessing').style.display = 'none';
+        document.getElementById('paymentSuccess').style.display = 'block';
+        
+        // Generate ticket
+        generateTicket(paymentMethod);
+        
+        document.getElementById('paymentSuccess').scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+
+    // Generate Ticket Function
+    function generateTicket(paymentMethod) {
+        // Get form data
+        const visitDate = document.getElementById('visit-date').value;
+        const ticketType = document.getElementById('ticket-type').value;
+        const quantity = document.getElementById('quantity').value;
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const totalPrice = document.getElementById('totalPrice').textContent;
+        
+        // Format date
+        const formattedDate = new Date(visitDate).toLocaleDateString('en-IN', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+        });
+        
+        // Generate random ticket number and transaction ID
+        const ticketNumber = 'AV' + new Date().getFullYear() + '-' + Math.floor(100000 + Math.random() * 900000);
+        const transactionId = 'TXN' + Math.floor(100000 + Math.random() * 900000);
+        
+        // Map ticket types to display names
+        const ticketTypeNames = {
+            adult: 'Adult',
+            child: 'Child (5-12 yrs)',
+            student: 'Student',
+            foreign: 'Foreign Tourist',
+            senior: 'Senior Citizen'
+        };
+        
+        // Update ticket elements
+        document.getElementById('ticketNumber').textContent = ticketNumber;
+        document.getElementById('ticketVisitDate').textContent = formattedDate;
+        document.getElementById('ticketVisitorName').textContent = name;
+        document.getElementById('ticketType').textContent = ticketTypeNames[ticketType] || ticketType;
+        document.getElementById('ticketQuantity').textContent = quantity;
+        document.getElementById('ticketAmount').textContent = totalPrice;
+        document.getElementById('ticketPaymentMethod').textContent = paymentMethod === 'qr' ? 'QR Payment' : 
+            paymentMethod === 'upi' ? 'UPI' :
+            paymentMethod === 'netbanking' ? 'Net Banking' : 'Credit Card';
+        document.getElementById('ticketTransactionId').textContent = transactionId;
+        document.getElementById('ticketEmail').textContent = email;
+        
+        // Generate QR code for ticket
+        const qrData = `ArtVasta Ticket|${ticketNumber}|${name}|${formattedDate}|${totalPrice}`;
+        document.getElementById('ticketQrCode').innerHTML = `
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(qrData)}" 
+                 alt="Ticket QR Code" width="150" height="150">
+        `;
+    }
+
+    // Print Ticket Function
+    window.printTicket = function() {
+        window.print();
+    }
+
+    // Download Ticket Function
+    window.downloadTicket = function() {
+        // In a real app, this would generate a PDF
+        alert("In a real application, this would generate and download a PDF ticket");
     }
 
     // Handle Credit Card and UPI form submissions
     function handlePaymentSubmission(e) {
         e.preventDefault();
-        
-        // Show processing animation
         document.getElementById('paymentOptions').style.display = 'none';
         document.getElementById('paymentProcessing').style.display = 'block';
         
-        // Simulate payment processing (3 seconds)
+        const method = document.querySelector('.payment-method.active').getAttribute('data-method');
+        
         setTimeout(function() {
-            document.getElementById('paymentProcessing').style.display = 'none';
-            document.getElementById('paymentSuccess').style.display = 'block';
-            
-            // Scroll to success message
-            document.getElementById('paymentSuccess').scrollIntoView({
-                behavior: 'smooth'
-            });
+            showPaymentSuccess(method);
         }, 3000);
     }
 
     // Handle Net Banking form submission
     function handleNetBankingSubmission(e) {
         e.preventDefault();
-        
-        // Get selected bank
         const bankSelect = document.getElementById('bank');
         if (!bankSelect || bankSelect.value === "") {
             alert("Please select a bank");
             return;
         }
         
-        const selectedBank = bankSelect.options[bankSelect.selectedIndex].text;
-        
-        // Show processing with bank info
         document.getElementById('paymentOptions').style.display = 'none';
-        const processingElement = document.getElementById('paymentProcessing');
-        processingElement.style.display = 'block';
+        document.getElementById('paymentProcessing').style.display = 'block';
         
-        // Update processing message
-        const processingText = processingElement.querySelector('p');
-        if (processingText) {
-            processingText.textContent = `Redirecting to ${selectedBank} Net Banking...`;
-        }
-        
-        // Simulate bank redirect (3 seconds)
         setTimeout(function() {
-            processingElement.style.display = 'none';
-            const successElement = document.getElementById('paymentSuccess');
-            successElement.style.display = 'block';
-            
-            // Update success message
-            const successText = successElement.querySelector('p');
-            if (successText) {
-                successText.innerHTML = `Payment successful via ${selectedBank}!<br>
-                     Your ticket will be sent to your email shortly.`;
-            }
-            
-            successElement.scrollIntoView({
-                behavior: 'smooth'
-            });
+            showPaymentSuccess('netbanking');
         }, 3000);
     }
 
