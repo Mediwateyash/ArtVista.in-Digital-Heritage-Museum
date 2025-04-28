@@ -140,6 +140,10 @@
                     <i class="fas fa-university"></i>
                     <span>Net Banking</span>
                 </div>
+                <div class="payment-method" data-method="qr">
+                    <i class="fas fa-qrcode"></i>
+                    <span>QR Code</span>
+                </div>
             </div>
 
             <!-- Credit Card Form (Default) -->
@@ -177,9 +181,21 @@
                     <button type="submit" class="btn">Pay via UPI</button>
                 </form>
             </div>
-
+<!-- QR Code Form (Hidden) -->
+<div class="payment-form" id="qrForm" style="display: none;">
+    <div class="qr-payment-container">
+        <h3>Scan the QR Code to Pay</h3>
+        <div class="qr-code" id="qrCodeDisplay">
+            <!-- QR code will be generated here -->
+        </div>
+        <p>Amount: <span id="qrAmount">₹50</span></p>
+        <div class="qr-timer">
+            <p>This QR will expire in: <span id="qrTimer">10</span> seconds</p>
+        </div>
+    </div>
+</div>
             <!-- Net Banking Form (Hidden) -->
-            <div class="payment-form" id="netBankingForm" style="display: none;">
+            <div class="payment-form" id="netBanking" style="display: none;">
                 <form>
                     <div class="form-group">
                         <label for="bank">Select Bank</label>
@@ -238,8 +254,8 @@
             <p>&copy; 2023 Ancient Shivaji Maharaj Museum. All Rights Reserved.</p>
         </div>
     </footer>
-
+    <!-- link to ticket.js file -->
     <script src="/Meauseum/js/ticket.js"></script>
-    <script src="/booking.js"></script> <!-- New JS for booking logic -->
+ 
 </body>
 </html>

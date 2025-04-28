@@ -117,4 +117,61 @@
     .payment-methods {
         flex-direction: column;
     }
+}.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}/* Net Banking specific styles */
+#netBankingForm select {
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+}
+
+#netBankingForm .form-group {
+    margin-bottom: 20px;
+}/* QR Code Payment Styles */
+.qr-payment-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.qr-code {
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-timer {
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+#qrTimer {
+    font-weight: bold;
+    color: #d4af37;
+}
+
+/* Make sure the QR code image fits */
+.qr-code img {
+    max-width: 100%;
+    max-height: 100%;
 }
